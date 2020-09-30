@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Task 01 (Refactory.id)</title>
+    </head>
+    
+    <body >
+        <header id="header" style="text-align:center">
+            <h1>SORTING</h1>
+            <p>Buatlah sebuah program untuk menampilkan dan menghitung jumlah swap yang diperlukan agar sebuah deret angka menjadi berurutan.</p>
+        </header>
+        
+        <div id="main">
+            <p v-once>input  : {{ unsorted }}</p>
+            <p>output : </p>
+            <!-- {{ counter(unsorted) }} -->
+            <ol>
+                <li v-for="i in 10" v-once>{{ swapping(unsorted) }}</li>
+            </ol>
+            <p>Jumlah swap : {{ count }}</p>
+        </div>
+
+        <footer id="footer">
+            <p>copyright 2020</p>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+        <script>
+            const member = {
+                unsorted: [4, 9, 7, 5, 8, 9, 3],
+                count: 0
+            }
+            const vm = new Vue({
+                el: '#main',
+                data: member,
+                methods: {
+                    counter(arr) {
+                        for(i=0;i<=arr.length;i++){
+                            if(arr[i] > arr[i+1]) {
+                                temp = arr[i]
+                                arr[i] = arr[i+1]
+                                arr[i+1] = temp
+                                this.count++
+                                i=0
+                            }
+                        }
+                    },
+                    swapping(arr) {
+                        for(i=0;i<arr.length;i++){
+                            if(arr[i] > arr[i+1]) {
+                                temp = arr[i]
+                                arr[i] = arr[i+1]
+                                arr[i+1] = temp
+                                this.count++
+                                this.unsorted = arr
+                                break
+                            }
+                        }
+                        return this.unsorted
+                    }
+                },
+            })
+
+        </script>
+    </body>
+</html>
+
+
